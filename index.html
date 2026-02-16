@@ -4,111 +4,132 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAJAHBOLA Premium Member</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
 <style>
+/* ===== Body & Wrapper ===== */
 body{
     margin:0;
     font-family:'Inter',sans-serif;
     display:flex;
     justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    background: linear-gradient(135deg, #0B3D91, #1E90FF, #F0F8FF);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
     padding:20px 0;
-    background: linear-gradient(135deg, #162447, #1f4068);
-    color:#F8F8F8;
+}
+
+@keyframes gradientBG{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
 }
 
 .wrapper{
     width:95%;
     max-width:480px;
+    text-align:center;
 }
 
+/* ===== Brand / Logo ===== */
 .brand{
-    text-align:center;
-    margin-bottom:20px;
+    margin-bottom:25px;
 }
 
 .brand h1{
     font-family:'Playfair Display',serif;
-    color:#FFD700;
+    font-size:36px;
     margin:0;
-    font-size:28px;
-    letter-spacing:1.5px;
+    background: linear-gradient(90deg,#1E90FF,#0B3D91);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
 }
 
 .brand p{
     margin-top:5px;
-    font-size:13px;
-    color:#ddd;
+    font-size:14px;
+    color:#F0F8FF;
 }
 
+/* ===== Cards ===== */
 .card{
-    background:#2a2a3c;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:0 8px 30px rgba(0,0,0,0.4);
+    background: rgba(255,255,255,0.95);
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 10px 35px rgba(0,0,0,0.2);
     margin-bottom:20px;
-    border:1px solid rgba(255,215,0,0.3);
+    border:1px solid rgba(0,60,130,0.3);
+    transition: transform 0.3s ease;
+}
+
+.card:hover{
+    transform: translateY(-3px);
 }
 
 .card h2{
-    text-align:center;
-    color:#FFD700;
     margin-top:0;
-    font-size:18px;
+    font-size:20px;
+    color:#0B3D91;
 }
 
+/* ===== Input ===== */
 input{
     width:100%;
-    padding:12px;
-    margin-bottom:12px;
-    border-radius:6px;
-    border:1px solid #ccc;
-    font-size:14px;
-    background:#3b3b50;
-    color:#fff;
+    padding:14px;
+    margin-bottom:15px;
+    border-radius:8px;
+    border:2px solid #ccc;
+    font-size:15px;
+    transition: all 0.3s ease;
 }
 
 input:focus{
     outline:none;
-    border-color:#FFD700;
+    border-image-slice:1;
+    border-width:2px;
+    border-image-source: linear-gradient(90deg,#1E90FF,#0B3D91,#F0F8FF);
 }
 
+/* ===== Button ===== */
 .button{
     width:100%;
-    padding:14px;
-    background:#FFD700;
+    padding:15px;
     border:none;
-    border-radius:6px;
+    border-radius:8px;
+    background: linear-gradient(90deg,#0B3D91,#1E90FF);
+    color:#fff;
     font-weight:600;
+    font-size:16px;
     cursor:pointer;
-    color:#000;
+    transition: all 0.3s ease;
 }
 
 .button:hover{
-    background:#e6c200;
+    background: linear-gradient(90deg,#1E90FF,#0B3D91);
+    transform: translateY(-2px);
 }
 
+.button:active{
+    transform: scale(0.97);
+}
+
+/* ===== Status & History ===== */
 .detail{
     display:flex;
     justify-content:space-between;
     font-size:14px;
     margin-bottom:8px;
-}
-
-.badge{
-    display:inline-block;
-    padding:4px 10px;
-    border-radius:8px;
-    font-size:12px;
-    font-weight:600;
-    color:#000;
-    background: linear-gradient(135deg,#FFD700,#ffea85);
-    margin-left:5px;
+    color:#0B3D91;
 }
 
 .progress-container{
     width:100%;
-    height:10px;
-    background:#444;
+    height:12px;
+    background:#ddd;
     border-radius:20px;
     margin-top:15px;
     overflow:hidden;
@@ -117,7 +138,7 @@ input:focus{
 .progress-bar{
     height:100%;
     width:0%;
-    background: linear-gradient(270deg,#FFD700,#fff0a0,#FFD700);
+    background: linear-gradient(270deg,#1E90FF,#0B3D91,#1E90FF);
     background-size:400% 400%;
     animation:shimmer 2s linear infinite;
 }
@@ -132,7 +153,7 @@ input:focus{
     text-align:center;
     font-size:13px;
     margin-top:10px;
-    color:#ddd;
+    color:#0B3D91;
 }
 
 .history-container{
@@ -151,13 +172,15 @@ input:focus{
     border-bottom:1px solid #eee;
 }
 
+/* ===== Footer ===== */
 .footer{
     text-align:center;
     font-size:12px;
-    color:#ccc;
+    color:#0B3D91;
     margin-top:10px;
 }
 
+/* ===== Modal ===== */
 .modal{
     display:none;
     position:fixed;
@@ -165,24 +188,28 @@ input:focus{
     left:0;
     width:100%;
     height:100%;
-    background:rgba(0,0,0,0.7);
+    background:rgba(0,0,0,0.6);
     justify-content:center;
     align-items:center;
 }
 
 .modal-content{
-    background:#2a2a3c;
+    background:#fff;
     padding:25px;
     border-radius:12px;
     text-align:center;
     width:90%;
     max-width:350px;
-    color:#F8F8F8;
-    border:1px solid #FFD700;
 }
 
 .modal h2{
-    color:#FFD700;
+    color:#0B3D91;
+}
+
+.modal p{
+    margin:10px 0;
+    font-size:14px;
+    color:#333;
 }
 
 .modal button{
@@ -194,8 +221,8 @@ input:focus{
     font-weight:600;
 }
 
-.button-close{background:#ccc;color:#000;}
-.button-cs{background:#FFD700;color:#000;}
+.button-close{background:#ccc;}
+.button-cs{background: linear-gradient(90deg,#0B3D91,#1E90FF); color:#fff;}
 </style>
 </head>
 <body>
@@ -210,12 +237,11 @@ input:focus{
 <div class="card" id="loginCard">
     <h2>Member Login</h2>
     <input type="text" id="username" placeholder="User ID">
-    <input type="password" id="password" placeholder="Password">
     <button class="button" onclick="login()">Login</button>
 </div>
 
 <div class="card" id="bonusCard" style="display:none;">
-    <h2>BONUS DEPOSIT <span id="vipBadge" class="badge" style="display:none;">VIP</span></h2>
+    <h2>BONUS DEPOSIT</h2>
 
     <input type="number" id="deposit" placeholder="Masukkan Deposit (min 10.000)" min="10000">
 
@@ -242,22 +268,26 @@ input:focus{
     <div class="modal-content">
         <h2>Bonus Aktif</h2>
         <p id="modalMessage"></p>
+        <p>Silakan screenshot & kirim ke CS untuk aktivasi.</p>
         <button class="button-close" onclick="closeModal()">Tutup</button>
         <button class="button-cs" onclick="window.open('https://gajahchampion.com/')">Hubungi CS</button>
     </div>
 </div>
 
 <script>
-let names = ["agus","mika","miswan","rizal","budi","sinta","rahma","andika","rudi","tania","fajar","putri","dian","farhan","yoga","zaki","rio","nina","sari","doni"];
-let historyData = [];
+let names=["agus","mika","miswan","rizal","budi","sinta","rahma","andika","rudi","tania","fajar","putri","dian","farhan","yoga","zaki","rio","nina","sari","doni"];
+let historyData=[];
+let currentUser="";
 
+/* ===== Generate 20 Fake History Saat Load ===== */
 for(let i=0;i<20;i++){
-    let randomName = names[Math.floor(Math.random()*names.length)];
-    let userId = randomName + Math.floor(Math.random()*999);
-    let deposit = Math.floor(Math.random()*(1000000-10000)/1000)*1000;
+    let randomName=names[Math.floor(Math.random()*names.length)];
+    let userId=randomName+Math.floor(Math.random()*999);
+    let deposit=Math.floor(Math.random()*(1000000-10000)/1000)*1000;
     historyData.push({userId,deposit});
 }
 
+/* ===== Render History ===== */
 function renderHistory(){
     const container=document.getElementById("historyContainer");
     container.innerHTML="";
@@ -268,35 +298,46 @@ function renderHistory(){
         container.appendChild(div);
     });
 }
+
 renderHistory();
 
+/* ===== Login ===== */
 function login(){
-    const user = document.getElementById("username").value;
-    const pass = document.getElementById("password").value;
-    if(!user || !pass){ alert("Silakan isi User ID dan Password."); return;}
+    const username=document.getElementById("username").value.trim();
+    if(!username){ alert("Silakan isi User ID"); return;}
+
+    currentUser=username;
+
     document.getElementById("loginCard").style.display="none";
     document.getElementById("bonusCard").style.display="block";
 
-    const today = new Date().toISOString().split('T')[0];
-    const claimedUsers = JSON.parse(localStorage.getItem("claimedUsers")||"{}");
-    if(claimedUsers[user]===today){
+    checkClaimStatus();
+}
+
+/* ===== Check Claim ===== */
+function checkClaimStatus(){
+    const today=new Date().toISOString().split('T')[0];
+    const claimedUsers=JSON.parse(localStorage.getItem("claimedUsers")||"{}");
+
+    if(claimedUsers[currentUser]===today){
         document.getElementById("claimButton").disabled=true;
+        document.getElementById("claimButton").innerText="Sudah Klaim Hari Ini";
         document.getElementById("statusText").innerText="Anda sudah klaim bonus hari ini.";
     }
 }
 
+/* ===== Activate Bonus ===== */
 function activateBonus(){
-    const username = document.getElementById("username").value;
-    const today = new Date().toISOString().split('T')[0];
-    const claimedUsers = JSON.parse(localStorage.getItem("claimedUsers")||"{}");
+    const today=new Date().toISOString().split('T')[0];
+    const claimedUsers=JSON.parse(localStorage.getItem("claimedUsers")||"{}");
 
-    if(claimedUsers[username]===today){
+    if(claimedUsers[currentUser]===today){
         alert("User ini sudah klaim bonus hari ini.");
         return;
     }
 
     let deposit=parseInt(document.getElementById("deposit").value);
-    if(!deposit||deposit<10000){alert("Minimal deposit 10.000");return;}
+    if(!deposit||deposit<10000){ alert("Minimal deposit 10.000"); return;}
 
     let bonus=deposit>1000000?1000000:deposit;
     let turnover=deposit<=50000?"0x":(deposit<=200000?"1x":"2x");
@@ -305,38 +346,32 @@ function activateBonus(){
     document.getElementById("displayBonus").innerText="IDR "+bonus.toLocaleString('id-ID');
     document.getElementById("displayTurnover").innerText=turnover;
 
-    historyData.unshift({userId:username,deposit});
-    if(historyData.length>20) historyData.pop();
+    /* Masukkan ke history paling atas */
+    historyData.unshift({userId:currentUser,deposit});
+    if(historyData.length>20){
+        historyData.pop();
+    }
     renderHistory();
 
-    // Badge VIP logic
-    const vipBadge=document.getElementById("vipBadge");
-    if(deposit>=200000){
-        vipBadge.style.display="inline-block";
-    }else{
-        vipBadge.style.display="none";
-    }
-
-    claimedUsers[username]=today;
-    localStorage.setItem("claimedUsers", JSON.stringify(claimedUsers));
+    claimedUsers[currentUser]=today;
+    localStorage.setItem("claimedUsers",JSON.stringify(claimedUsers));
 
     let width=0;
     let progressBar=document.getElementById("progressBar");
-    let statusText=document.getElementById("statusText");
-
     let interval=setInterval(()=>{
         width+=2;
         progressBar.style.width=width+"%";
         if(width>=100){
             clearInterval(interval);
-            statusText.innerText="Bonus Aktif! Silakan screenshot & kirim ke CS";
+            document.getElementById("statusText").innerText="Bonus Aktif! Silakan screenshot & kirim ke CS";
             document.getElementById("modalMessage").innerHTML=
                 `Deposit: IDR ${deposit.toLocaleString('id-ID')}<br>
                  Bonus: IDR ${bonus.toLocaleString('id-ID')}<br>
-                 Turnover: ${turnover}<br>
-                 ${deposit>=200000 ? '<b>VIP Badge Activated!</b>' : ''}`;
+                 Turnover: ${turnover}`;
             document.getElementById("bonusModal").style.display="flex";
+
             document.getElementById("claimButton").disabled=true;
+            document.getElementById("claimButton").innerText="Sudah Klaim Hari Ini";
         }
     },40);
 }

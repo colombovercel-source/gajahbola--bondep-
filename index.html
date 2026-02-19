@@ -8,7 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
-/* ===== Body & Wrapper ===== */
 body{
     margin:0;
     font-family:'Inter',sans-serif;
@@ -21,7 +20,6 @@ body{
     animation: gradientBG 15s ease infinite;
     padding:20px 0;
 }
-
 @keyframes gradientBG{
     0%{background-position:0% 50%;}
     50%{background-position:100% 50%;}
@@ -34,11 +32,9 @@ body{
     text-align:center;
 }
 
-/* ===== Brand / Logo ===== */
 .brand{
     margin-bottom:25px;
 }
-
 .brand h1{
     font-family:'Playfair Display',serif;
     font-size:36px;
@@ -46,37 +42,26 @@ body{
     background: linear-gradient(90deg,#1E90FF,#0B3D91);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
 }
-
 .brand p{
     margin-top:5px;
     font-size:14px;
     color:#F0F8FF;
 }
 
-/* ===== Cards ===== */
 .card{
     background: rgba(255,255,255,0.95);
     padding:25px;
     border-radius:15px;
     box-shadow:0 10px 35px rgba(0,0,0,0.2);
     margin-bottom:20px;
-    border:1px solid rgba(0,60,130,0.3);
-    transition: transform 0.3s ease;
 }
-
-.card:hover{
-    transform: translateY(-3px);
-}
-
 .card h2{
     margin-top:0;
     font-size:20px;
     color:#0B3D91;
 }
 
-/* ===== Input ===== */
 input{
     width:100%;
     padding:14px;
@@ -84,17 +69,8 @@ input{
     border-radius:8px;
     border:2px solid #ccc;
     font-size:15px;
-    transition: all 0.3s ease;
 }
 
-input:focus{
-    outline:none;
-    border-image-slice:1;
-    border-width:2px;
-    border-image-source: linear-gradient(90deg,#1E90FF,#0B3D91,#F0F8FF);
-}
-
-/* ===== Button ===== */
 .button{
     width:100%;
     padding:15px;
@@ -105,19 +81,8 @@ input:focus{
     font-weight:600;
     font-size:16px;
     cursor:pointer;
-    transition: all 0.3s ease;
 }
 
-.button:hover{
-    background: linear-gradient(90deg,#1E90FF,#0B3D91);
-    transform: translateY(-2px);
-}
-
-.button:active{
-    transform: scale(0.97);
-}
-
-/* ===== Status & History ===== */
 .detail{
     display:flex;
     justify-content:space-between;
@@ -134,7 +99,6 @@ input:focus{
     margin-top:15px;
     overflow:hidden;
 }
-
 .progress-bar{
     height:100%;
     width:0%;
@@ -142,7 +106,6 @@ input:focus{
     background-size:400% 400%;
     animation:shimmer 2s linear infinite;
 }
-
 @keyframes shimmer{
     0%{background-position:0% 50%;}
     50%{background-position:100% 50%;}
@@ -150,7 +113,6 @@ input:focus{
 }
 
 .status-text{
-    text-align:center;
     font-size:13px;
     margin-top:10px;
     color:#0B3D91;
@@ -163,7 +125,6 @@ input:focus{
     border-top:1px solid #ddd;
     padding-top:10px;
 }
-
 .history-item{
     display:flex;
     justify-content:space-between;
@@ -172,15 +133,12 @@ input:focus{
     border-bottom:1px solid #eee;
 }
 
-/* ===== Footer ===== */
 .footer{
     text-align:center;
     font-size:12px;
     color:#0B3D91;
-    margin-top:10px;
 }
 
-/* ===== Modal ===== */
 .modal{
     display:none;
     position:fixed;
@@ -192,7 +150,6 @@ input:focus{
     justify-content:center;
     align-items:center;
 }
-
 .modal-content{
     background:#fff;
     padding:25px;
@@ -201,30 +158,18 @@ input:focus{
     width:90%;
     max-width:350px;
 }
-
-.modal h2{
-    color:#0B3D91;
-}
-
-.modal p{
-    margin:10px 0;
-    font-size:14px;
-    color:#333;
-}
-
 .modal button{
     margin:5px;
     padding:10px 15px;
     border:none;
     border-radius:6px;
     cursor:pointer;
-    font-weight:600;
 }
-
 .button-close{background:#ccc;}
 .button-cs{background: linear-gradient(90deg,#0B3D91,#1E90FF); color:#fff;}
 </style>
 </head>
+
 <body>
 
 <div class="wrapper">
@@ -237,6 +182,7 @@ input:focus{
 <div class="card" id="loginCard">
     <h2>Member Login</h2>
     <input type="text" id="username" placeholder="User ID">
+    <input type="text" id="voucherCode" placeholder="Kode Voucher (Opsional)">
     <button class="button" onclick="login()">Login</button>
 </div>
 
@@ -263,7 +209,6 @@ input:focus{
 <div class="footer">© 2026 GAJAHBOLA</div>
 </div>
 
-<!-- Modal -->
 <div id="bonusModal" class="modal">
     <div class="modal-content">
         <h2>Bonus Aktif</h2>
@@ -278,8 +223,9 @@ input:focus{
 let names=["agus","mika","miswan","rizal","budi","sinta","rahma","andika","rudi","tania","fajar","putri","dian","farhan","yoga","zaki","rio","nina","sari","doni"];
 let historyData=[];
 let currentUser="";
+let voucherActive=false;
 
-/* ===== Generate 20 Fake History Saat Load ===== */
+/* Generate fake history */
 for(let i=0;i<20;i++){
     let randomName=names[Math.floor(Math.random()*names.length)];
     let userId=randomName+Math.floor(Math.random()*999);
@@ -287,7 +233,6 @@ for(let i=0;i<20;i++){
     historyData.push({userId,deposit});
 }
 
-/* ===== Render History ===== */
 function renderHistory(){
     const container=document.getElementById("historyContainer");
     container.innerHTML="";
@@ -298,27 +243,24 @@ function renderHistory(){
         container.appendChild(div);
     });
 }
-
 renderHistory();
 
-/* ===== Login ===== */
 function login(){
     const username=document.getElementById("username").value.trim();
+    const voucher=document.getElementById("voucherCode").value.trim();
     if(!username){ alert("Silakan isi User ID"); return;}
-
     currentUser=username;
+
+    if(voucher==="GAJAHJACKPOT"){ voucherActive=true; }
 
     document.getElementById("loginCard").style.display="none";
     document.getElementById("bonusCard").style.display="block";
-
     checkClaimStatus();
 }
 
-/* ===== Check Claim ===== */
 function checkClaimStatus(){
     const today=new Date().toISOString().split('T')[0];
     const claimedUsers=JSON.parse(localStorage.getItem("claimedUsers")||"{}");
-
     if(claimedUsers[currentUser]===today){
         document.getElementById("claimButton").disabled=true;
         document.getElementById("claimButton").innerText="Sudah Klaim Hari Ini";
@@ -326,31 +268,25 @@ function checkClaimStatus(){
     }
 }
 
-/* ===== Activate Bonus ===== */
 function activateBonus(){
     const today=new Date().toISOString().split('T')[0];
     const claimedUsers=JSON.parse(localStorage.getItem("claimedUsers")||"{}");
-
-    if(claimedUsers[currentUser]===today){
-        alert("User ini sudah klaim bonus hari ini.");
-        return;
-    }
+    if(claimedUsers[currentUser]===today){ alert("User ini sudah klaim bonus hari ini."); return;}
 
     let deposit=parseInt(document.getElementById("deposit").value);
     if(!deposit||deposit<10000){ alert("Minimal deposit 10.000"); return;}
 
     let bonus=deposit>1000000?1000000:deposit;
+    if(voucherActive){ bonus+=200000; }
+
     let turnover=deposit<=50000?"0x":(deposit<=200000?"1x":"2x");
 
     document.getElementById("displayDeposit").innerText="IDR "+deposit.toLocaleString('id-ID');
     document.getElementById("displayBonus").innerText="IDR "+bonus.toLocaleString('id-ID');
     document.getElementById("displayTurnover").innerText=turnover;
 
-    /* Masukkan ke history paling atas */
     historyData.unshift({userId:currentUser,deposit});
-    if(historyData.length>20){
-        historyData.pop();
-    }
+    if(historyData.length>20){ historyData.pop(); }
     renderHistory();
 
     claimedUsers[currentUser]=today;
@@ -369,7 +305,6 @@ function activateBonus(){
                  Bonus: IDR ${bonus.toLocaleString('id-ID')}<br>
                  Turnover: ${turnover}`;
             document.getElementById("bonusModal").style.display="flex";
-
             document.getElementById("claimButton").disabled=true;
             document.getElementById("claimButton").innerText="Sudah Klaim Hari Ini";
         }
